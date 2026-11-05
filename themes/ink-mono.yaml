@@ -1,0 +1,25 @@
+---
+name: Ink Mono
+accent: "#E0A458"
+background: "#111214"
+foreground: "#CFD2D6"
+details: darker
+terminal_colors:
+  normal:
+    black: "#111214"
+    red: "#D26B5E"
+    green: "#8DB36E"
+    yellow: "#E0A458"
+    blue: "#7C8694"
+    magenta: "#8A8397"
+    cyan: "#7E9A9A"
+    white: "#CFD2D6"
+  bright:
+    black: "#4B5059"
+    red: "#E38A7E"
+    green: "#A3C586"
+    yellow: "#EDB97A"
+    blue: "#959DAA"
+    magenta: "#A59FB0"
+    cyan: "#9DB5B5"
+    white: "#EEF0F2"
