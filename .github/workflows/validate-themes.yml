@@ -1,1 +1,49 @@
+name: Validate themes
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: pip install pyyaml==6.0.2
+
+      - name: Check every theme file
+        run: python3 scripts/validate_themes.py
+
+      - name: Check Claude Code themes match the Warp palettes
+        run: python3 scripts/build_claude_themes.py --check
+
+      - name: Check Windows Terminal and iTerm2 exports match the Warp palettes
+        run: python3 scripts/build_terminal_exports.py --check
+
+      - name: Check preview pages match the themes
+        run: python3 scripts/build_preview.py --check
+
+      - name: Smoke-test the installers
+        run: |
+          WARP_THEMES_DIR="$RUNNER_TEMP/warp-themes" bash install.sh
+          test "$(ls "$RUNNER_TEMP/warp-themes" | wc -l)" -eq "$(ls themes/*.yaml | wc -l)"
+          CLAUDE_THEMES_DIR="$RUNNER_TEMP/claude-themes" bash install-claude.sh
+          test "$(ls "$RUNNER_TEMP/claude-themes" | wc -l)" -eq "$(ls claude-code/themes/*.json | wc -l)"
+          GHOSTTY_THEMES_DIR="$RUNNER_TEMP/ghostty-themes" bash install-ghostty.sh
+          test "$(ls "$RUNNER_TEMP/ghostty-themes" | wc -l)" -eq "$(ls dist/ghostty | wc -l)"
+          KITTY_CONFIG_DIR="$RUNNER_TEMP/kitty" bash install-terminals.sh kitty
+          test "$(ls "$RUNNER_TEMP/kitty" | wc -l)" -eq "$(ls dist/kitty | wc -l)"
+          WEZTERM_COLORS_DIR="$RUNNER_TEMP/wezterm" bash install-terminals.sh wezterm
+          test "$(ls "$RUNNER_TEMP/wezterm" | wc -l)" -eq "$(ls dist/wezterm | wc -l)"
+          ALACRITTY_THEMES_DIR="$RUNNER_TEMP/alacritty" bash install-terminals.sh alacritty
+          test "$(ls "$RUNNER_TEMP/alacritty" | wc -l)" -eq "$(ls dist/alacritty | wc -l)"
 
