@@ -1,0 +1,14 @@
+[colors]
+foreground = "#F5F6F8"
+background = "#0B0C0E"
+cursor_bg = "#7DB8FF"
+cursor_fg = "#0B0C0E"
+cursor_border = "#7DB8FF"
+selection_fg = "#F5F6F8"
+selection_bg = "#2D4056"
+ansi = ["#0B0C0E", "#FF6B6B", "#5CE08A", "#FFD966", "#6AB0FF", "#E08CFF", "#5CE0E0", "#F5F6F8"]
+brights = ["#6B7079", "#FF9B9B", "#8FF0B0", "#FFE699", "#93C7FF", "#EDB3FF", "#93EDED", "#FFFFFF"]
+
+[metadata]
+name = "Termies Contrast Night"
+author = "Termies"

@@ -1,0 +1,14 @@
+[colors]
+foreground = "#D9DCE2"
+background = "#48494C"
+cursor_bg = "#8FA8C8"
+cursor_fg = "#48494C"
+cursor_border = "#8FA8C8"
+selection_fg = "#D9DCE2"
+selection_bg = "#5D6671"
+ansi = ["#17181C", "#D97C75", "#9CBF88", "#D6B977", "#7F9FCB", "#B392C9", "#7DB8B5", "#D9DCE2"]
+brights = ["#4A505C", "#E8958E", "#B5D4A1", "#E6CF98", "#9DB8DE", "#C9AEDB", "#9ACFCB", "#EEF0F3"]
+
+[metadata]
+name = "Termies Soft Chat Dusk"
+author = "Termies"

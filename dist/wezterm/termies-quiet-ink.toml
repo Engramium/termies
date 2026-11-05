@@ -1,0 +1,14 @@
+[colors]
+foreground = "#CFD2D6"
+background = "#0E0F11"
+cursor_bg = "#E0A458"
+cursor_fg = "#0E0F11"
+cursor_border = "#E0A458"
+selection_fg = "#CFD2D6"
+selection_bg = "#4D3C26"
+ansi = ["#0E0F11", "#D26B5E", "#8DB36E", "#E0A458", "#7C8694", "#8A8397", "#7E9A9A", "#CFD2D6"]
+brights = ["#4B5059", "#E38A7E", "#A3C586", "#EDB97A", "#959DAA", "#A59FB0", "#9DB5B5", "#EEF0F2"]
+
+[metadata]
+name = "Termies Quiet Ink"
+author = "Termies"

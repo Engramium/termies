@@ -1,0 +1,14 @@
+[colors]
+foreground = "#282A36"
+background = "#F7F5FB"
+cursor_bg = "#7B5CC4"
+cursor_fg = "#F7F5FB"
+cursor_border = "#7B5CC4"
+selection_fg = "#282A36"
+selection_bg = "#D2C7EA"
+ansi = ["#F7F5FB", "#B5534B", "#5C7F4A", "#9A7420", "#3D6B8C", "#7D5A9A", "#3E7F7B", "#282A36"]
+brights = ["#AFAEB6", "#C4756F", "#79936B", "#A78B4C", "#6489A3", "#977BAE", "#629390", "#686A72"]
+
+[metadata]
+name = "Termies Violet Day"
+author = "Termies"

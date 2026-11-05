@@ -1,0 +1,14 @@
+[colors]
+foreground = "#C9CED8"
+background = "#4A4C51"
+cursor_bg = "#8FA8C8"
+cursor_fg = "#4A4C51"
+cursor_border = "#8FA8C8"
+selection_fg = "#C9CED8"
+selection_bg = "#5F6875"
+ansi = ["#1B1D22", "#D7847F", "#9CBF88", "#D6B977", "#7F9FCB", "#B392C9", "#7DB8B5", "#C9CED8"]
+brights = ["#4A505C", "#E8958E", "#B5D4A1", "#E6CF98", "#9DB8DE", "#C9AEDB", "#9ACFCB", "#E6E9EF"]
+
+[metadata]
+name = "Termies Calm Focus Dusk"
+author = "Termies"

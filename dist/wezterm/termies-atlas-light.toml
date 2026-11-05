@@ -1,0 +1,14 @@
+[colors]
+foreground = "#383A42"
+background = "#FAFAFA"
+cursor_bg = "#526FFF"
+cursor_fg = "#FAFAFA"
+cursor_border = "#526FFF"
+selection_fg = "#383A42"
+selection_bg = "#C8D0FC"
+ansi = ["#383A42", "#E45649", "#50A14F", "#C18401", "#4078F2", "#A626A4", "#0184BC", "#A0A1A7"]
+brights = ["#A0A1A7", "#D0736C", "#659C67", "#AE893E", "#668FE3", "#BC5BBA", "#3498C6", "#383A42"]
+
+[metadata]
+name = "Termies Atlas Light"
+author = "Termies"

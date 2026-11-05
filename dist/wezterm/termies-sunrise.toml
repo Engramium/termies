@@ -1,0 +1,14 @@
+[colors]
+foreground = "#F6ECE4"
+background = "#241B19"
+cursor_bg = "#FF8A4C"
+cursor_fg = "#241B19"
+cursor_border = "#FF8A4C"
+selection_fg = "#F6ECE4"
+selection_bg = "#663C28"
+ansi = ["#241B19", "#D9776F", "#9CBF88", "#D6B977", "#7F9FCB", "#B392C9", "#7DB8B5", "#F6ECE4"]
+brights = ["#6E6460", "#E1928C", "#B0CCA0", "#DEC792", "#99B2D5", "#C2A8D4", "#97C6C4", "#F9F2EC"]
+
+[metadata]
+name = "Termies Sunrise"
+author = "Termies"

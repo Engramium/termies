@@ -1,0 +1,14 @@
+[colors]
+foreground = "#2F3440"
+background = "#F6F4EF"
+cursor_bg = "#3D6B8C"
+cursor_fg = "#F6F4EF"
+cursor_border = "#3D6B8C"
+selection_fg = "#2F3440"
+selection_bg = "#BECBD1"
+ansi = ["#2F3440", "#B5534B", "#5C7F4A", "#9A7420", "#3D6B8C", "#7D5A9A", "#3E7F7B", "#8A8F99"]
+brights = ["#7A808C", "#C96A62", "#76995F", "#B38E35", "#5884A8", "#9675B0", "#5A9A95", "#D5D8DE"]
+
+[metadata]
+name = "Termies Paper Light"
+author = "Termies"

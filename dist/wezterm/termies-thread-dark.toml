@@ -1,0 +1,14 @@
+[colors]
+foreground = "#D8D4CC"
+background = "#1E2026"
+cursor_bg = "#C2A878"
+cursor_fg = "#1E2026"
+cursor_border = "#C2A878"
+selection_fg = "#D8D4CC"
+selection_bg = "#4F493F"
+ansi = ["#1E2026", "#D9776F", "#9CBF88", "#D6B977", "#7F9FCB", "#B392C9", "#7DB8B5", "#D8D4CC"]
+brights = ["#5F5F60", "#E1928C", "#B0CCA0", "#DEC792", "#99B2D5", "#C2A8D4", "#97C6C4", "#E4E1DB"]
+
+[metadata]
+name = "Termies Thread Dark"
+author = "Termies"

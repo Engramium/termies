@@ -1,0 +1,14 @@
+[colors]
+foreground = "#E2D9CC"
+background = "#4B4845"
+cursor_bg = "#E08A5B"
+cursor_fg = "#4B4845"
+cursor_border = "#E08A5B"
+selection_fg = "#E2D9CC"
+selection_bg = "#785C4C"
+ansi = ["#1A1714", "#D28274", "#9CBF88", "#D9B872", "#7E9BB5", "#B08FB0", "#86B5A8", "#E2D9CC"]
+brights = ["#4E4740", "#E6978A", "#B6D6A6", "#E8CD8E", "#9DB8CF", "#C9AFC9", "#A5CDBF", "#F3EEE6"]
+
+[metadata]
+name = "Termies Ember Chat Dusk"
+author = "Termies"

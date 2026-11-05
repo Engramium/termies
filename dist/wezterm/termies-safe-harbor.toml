@@ -1,0 +1,14 @@
+[colors]
+foreground = "#E4E6EA"
+background = "#1C2026"
+cursor_bg = "#56B4E9"
+cursor_fg = "#1C2026"
+cursor_border = "#56B4E9"
+selection_fg = "#E4E6EA"
+selection_bg = "#2D4C60"
+ansi = ["#1C2026", "#D7660D", "#009E73", "#F0E442", "#56B4E9", "#CC79A7", "#E69F00", "#E4E6EA"]
+brights = ["#62656B", "#DF853D", "#33B18F", "#F3E968", "#78C3ED", "#D694B9", "#EBB233", "#FFFFFF"]
+
+[metadata]
+name = "Termies Safe Harbor"
+author = "Termies"

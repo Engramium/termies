@@ -1,0 +1,14 @@
+[colors]
+foreground = "#243026"
+background = "#F3F6F1"
+cursor_bg = "#4E7A55"
+cursor_fg = "#F3F6F1"
+cursor_border = "#4E7A55"
+selection_fg = "#243026"
+selection_bg = "#C2D1C2"
+ansi = ["#F3F6F1", "#B5534B", "#5C7F4A", "#9A7420", "#3D6B8C", "#7D5A9A", "#3E7F7B", "#243026"]
+brights = ["#ABB1AA", "#C4756F", "#79946A", "#A08649", "#6489A3", "#977BAE", "#62948F", "#666E67"]
+
+[metadata]
+name = "Termies Forest Dim Light"
+author = "Termies"

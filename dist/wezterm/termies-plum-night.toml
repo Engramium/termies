@@ -1,0 +1,14 @@
+[colors]
+foreground = "#FEF5F5"
+background = "#2C1647"
+cursor_bg = "#FF9F29"
+cursor_fg = "#2C1647"
+cursor_border = "#FF9F29"
+selection_fg = "#FEF5F5"
+selection_bg = "#6B3F3E"
+ansi = ["#2C1647", "#D9776F", "#00AB57", "#D6B977", "#7F9FCB", "#D44A8E", "#7DB8B5", "#FEF5F5"]
+brights = ["#786487", "#E1928C", "#33BC79", "#DEC792", "#99B2D5", "#DD6EA5", "#97C6C4", "#FFFFFF"]
+
+[metadata]
+name = "Termies Plum Night"
+author = "Termies"

@@ -1,0 +1,14 @@
+[colors]
+foreground = "#CFD2D6"
+background = "#434445"
+cursor_bg = "#E0A458"
+cursor_fg = "#434445"
+cursor_border = "#E0A458"
+selection_fg = "#CFD2D6"
+selection_bg = "#72614B"
+ansi = ["#111214", "#D2756A", "#8DB36E", "#E0A458", "#88919E", "#948FA0", "#7E9A9A", "#CFD2D6"]
+brights = ["#4B5059", "#E38A7E", "#A3C586", "#EDB97A", "#959DAA", "#A59FB0", "#9DB5B5", "#EEF0F2"]
+
+[metadata]
+name = "Termies Ink Mono Dusk"
+author = "Termies"

@@ -1,0 +1,14 @@
+[colors]
+foreground = "#22252B"
+background = "#F8F8F6"
+cursor_bg = "#0072B2"
+cursor_fg = "#F8F8F6"
+cursor_border = "#0072B2"
+selection_fg = "#22252B"
+selection_bg = "#AED0E2"
+ansi = ["#22252B", "#B55000", "#007E5C", "#966700", "#0072B2", "#995B7D", "#387597", "#5A5E66"]
+brights = ["#3A3E46", "#BF6925", "#259073", "#A57D25", "#2586BC", "#A7738F", "#5589A5", "#22252B"]
+
+[metadata]
+name = "Termies Safe Harbor Light"
+author = "Termies"

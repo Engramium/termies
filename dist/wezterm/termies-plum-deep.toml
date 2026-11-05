@@ -1,0 +1,14 @@
+[colors]
+foreground = "#E1E1E1"
+background = "#200125"
+cursor_bg = "#FF9F29"
+cursor_fg = "#200125"
+cursor_border = "#FF9F29"
+selection_fg = "#E1E1E1"
+selection_bg = "#633026"
+ansi = ["#200125", "#D9776F", "#7F6728", "#D6B977", "#7F9FCB", "#D44A8E", "#7DB8B5", "#E1E1E1"]
+brights = ["#644F67", "#E1928C", "#998553", "#DEC792", "#99B2D5", "#DD6EA5", "#97C6C4", "#FFFFFF"]
+
+[metadata]
+name = "Termies Plum Deep"
+author = "Termies"

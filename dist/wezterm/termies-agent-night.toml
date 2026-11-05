@@ -1,0 +1,14 @@
+[colors]
+foreground = "#00AC61"
+background = "#141724"
+cursor_bg = "#00AC61"
+cursor_fg = "#141724"
+cursor_border = "#00AC61"
+selection_fg = "#00AC61"
+selection_bg = "#0E4436"
+ansi = ["#141724", "#D9776F", "#00AC61", "#D6B977", "#005892", "#D44A8E", "#7DB8B5", "#D4D8E0"]
+brights = ["#0D4B39", "#E1928C", "#33BD81", "#DEC792", "#3379A8", "#DD6EA5", "#97C6C4", "#FFFFFF"]
+
+[metadata]
+name = "Termies Agent Night"
+author = "Termies"

@@ -1,0 +1,14 @@
+[colors]
+foreground = "#111418"
+background = "#FFFFFF"
+cursor_bg = "#0047AB"
+cursor_fg = "#FFFFFF"
+cursor_border = "#0047AB"
+selection_fg = "#111418"
+selection_bg = "#B2C8E6"
+ansi = ["#111418", "#B00020", "#006B2E", "#7A5A00", "#0047AB", "#7A1FA2", "#00606B", "#5A5E66"]
+brights = ["#3A3E46", "#D0203A", "#00843A", "#946E00", "#1A5FC4", "#9430C4", "#007A88", "#111418"]
+
+[metadata]
+name = "Termies Contrast Day"
+author = "Termies"

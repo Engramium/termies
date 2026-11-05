@@ -1,0 +1,14 @@
+[colors]
+foreground = "#C4CCC2"
+background = "#484F49"
+cursor_bg = "#A3C4A8"
+cursor_fg = "#484F49"
+cursor_border = "#A3C4A8"
+selection_fg = "#C4CCC2"
+selection_bg = "#637266"
+ansi = ["#182019", "#CD8D7F", "#9DBF8A", "#CDB97E", "#7FA4A0", "#AE98B5", "#86BDB0", "#C4CCC2"]
+brights = ["#4D5A4E", "#E39B8C", "#B6D6A6", "#E2D096", "#9CBDB8", "#C7B3CD", "#A5D4C7", "#E8EEE6"]
+
+[metadata]
+name = "Termies Forest Dim Dusk"
+author = "Termies"

@@ -1,0 +1,14 @@
+[colors]
+foreground = "#CFD9E7"
+background = "#001622"
+cursor_bg = "#709AB8"
+cursor_fg = "#001622"
+cursor_border = "#709AB8"
+selection_fg = "#CFD9E7"
+selection_bg = "#223E4F"
+ansi = ["#001622", "#D9776F", "#00D569", "#D6B977", "#7F9FCB", "#D44A8E", "#7DB8B5", "#CFD9E7"]
+brights = ["#4A5B69", "#E1928C", "#33DD87", "#DEC792", "#99B2D5", "#DD6EA5", "#97C6C4", "#FFFFFF"]
+
+[metadata]
+name = "Termies Agent Navy"
+author = "Termies"

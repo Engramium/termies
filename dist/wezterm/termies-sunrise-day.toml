@@ -1,0 +1,14 @@
+[colors]
+foreground = "#3A2A22"
+background = "#FFF8F2"
+cursor_bg = "#D9622B"
+cursor_fg = "#FFF8F2"
+cursor_border = "#D9622B"
+selection_fg = "#3A2A22"
+selection_bg = "#F4CBB6"
+ansi = ["#FFF8F2", "#B5534B", "#5C7F4A", "#9A7420", "#3D6B8C", "#7D5A9A", "#3E7F7B", "#3A2A22"]
+brights = ["#BAB0A9", "#C4756F", "#7D996E", "#A88B4B", "#6489A3", "#977BAE", "#659995", "#756A64"]
+
+[metadata]
+name = "Termies Sunrise Day"
+author = "Termies"

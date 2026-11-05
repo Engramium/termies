@@ -1,0 +1,14 @@
+[colors]
+foreground = "#E6E1D8"
+background = "#4E4D4A"
+cursor_bg = "#C9A46A"
+cursor_fg = "#4E4D4A"
+cursor_border = "#C9A46A"
+selection_fg = "#E6E1D8"
+selection_bg = "#736754"
+ansi = ["#1F1E1B", "#DA827A", "#9CBF88", "#D6B977", "#7F9FCB", "#B392C9", "#7DB8B5", "#E6E1D8"]
+brights = ["#65625D", "#E1928C", "#B0CCA0", "#DEC792", "#99B2D5", "#C2A8D4", "#97C6C4", "#EEEAE4"]
+
+[metadata]
+name = "Termies Paper Dusk"
+author = "Termies"
