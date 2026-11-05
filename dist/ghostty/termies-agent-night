@@ -1,0 +1,22 @@
+# Agent Night (Termies)
+background = #141724
+foreground = #00AC61
+cursor-color = #00AC61
+selection-background = #0E4436
+selection-foreground = #00AC61
+palette = 0=#141724
+palette = 1=#D9776F
+palette = 2=#00AC61
+palette = 3=#D6B977
+palette = 4=#005892
+palette = 5=#D44A8E
+palette = 6=#7DB8B5
+palette = 7=#D4D8E0
+palette = 8=#0D4B39
+palette = 9=#E1928C
+palette = 10=#33BD81
+palette = 11=#DEC792
+palette = 12=#3379A8
+palette = 13=#DD6EA5
+palette = 14=#97C6C4
+palette = 15=#FFFFFF

@@ -1,0 +1,22 @@
+# Paper Light (Termies)
+background = #F6F4EF
+foreground = #2F3440
+cursor-color = #3D6B8C
+selection-background = #BECBD1
+selection-foreground = #2F3440
+palette = 0=#2F3440
+palette = 1=#B5534B
+palette = 2=#5C7F4A
+palette = 3=#9A7420
+palette = 4=#3D6B8C
+palette = 5=#7D5A9A
+palette = 6=#3E7F7B
+palette = 7=#8A8F99
+palette = 8=#7A808C
+palette = 9=#C96A62
+palette = 10=#76995F
+palette = 11=#B38E35
+palette = 12=#5884A8
+palette = 13=#9675B0
+palette = 14=#5A9A95
+palette = 15=#D5D8DE

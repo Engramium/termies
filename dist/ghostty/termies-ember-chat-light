@@ -1,0 +1,22 @@
+# Ember Chat Light (Termies)
+background = #FAF6F1
+foreground = #2E2620
+cursor-color = #B85A2E
+selection-background = #E6C7B6
+selection-foreground = #2E2620
+palette = 0=#FAF6F1
+palette = 1=#B5534B
+palette = 2=#5C7F4A
+palette = 3=#9A7420
+palette = 4=#3D6B8C
+palette = 5=#7D5A9A
+palette = 6=#3E7F7B
+palette = 7=#2E2620
+palette = 8=#B3ADA8
+palette = 9=#C4756F
+palette = 10=#79936A
+palette = 11=#A88B4B
+palette = 12=#6489A3
+palette = 13=#977BAE
+palette = 14=#62938F
+palette = 15=#6D6763

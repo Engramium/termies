@@ -1,0 +1,22 @@
+# Safe Harbor Light (Termies)
+background = #F8F8F6
+foreground = #22252B
+cursor-color = #0072B2
+selection-background = #AED0E2
+selection-foreground = #22252B
+palette = 0=#22252B
+palette = 1=#B55000
+palette = 2=#007E5C
+palette = 3=#966700
+palette = 4=#0072B2
+palette = 5=#995B7D
+palette = 6=#387597
+palette = 7=#5A5E66
+palette = 8=#3A3E46
+palette = 9=#BF6925
+palette = 10=#259073
+palette = 11=#A57D25
+palette = 12=#2586BC
+palette = 13=#A7738F
+palette = 14=#5589A5
+palette = 15=#22252B

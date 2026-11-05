@@ -1,0 +1,22 @@
+# Plum Night (Termies)
+background = #2C1647
+foreground = #FEF5F5
+cursor-color = #FF9F29
+selection-background = #6B3F3E
+selection-foreground = #FEF5F5
+palette = 0=#2C1647
+palette = 1=#D9776F
+palette = 2=#00AB57
+palette = 3=#D6B977
+palette = 4=#7F9FCB
+palette = 5=#D44A8E
+palette = 6=#7DB8B5
+palette = 7=#FEF5F5
+palette = 8=#786487
+palette = 9=#E1928C
+palette = 10=#33BC79
+palette = 11=#DEC792
+palette = 12=#99B2D5
+palette = 13=#DD6EA5
+palette = 14=#97C6C4
+palette = 15=#FFFFFF

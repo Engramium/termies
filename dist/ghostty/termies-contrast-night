@@ -1,0 +1,22 @@
+# Contrast Night (Termies)
+background = #0B0C0E
+foreground = #F5F6F8
+cursor-color = #7DB8FF
+selection-background = #2D4056
+selection-foreground = #F5F6F8
+palette = 0=#0B0C0E
+palette = 1=#FF6B6B
+palette = 2=#5CE08A
+palette = 3=#FFD966
+palette = 4=#6AB0FF
+palette = 5=#E08CFF
+palette = 6=#5CE0E0
+palette = 7=#F5F6F8
+palette = 8=#6B7079
+palette = 9=#FF9B9B
+palette = 10=#8FF0B0
+palette = 11=#FFE699
+palette = 12=#93C7FF
+palette = 13=#EDB3FF
+palette = 14=#93EDED
+palette = 15=#FFFFFF

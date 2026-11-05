@@ -1,0 +1,22 @@
+# Soft Chat Dusk (Termies)
+background = #48494C
+foreground = #D9DCE2
+cursor-color = #8FA8C8
+selection-background = #5D6671
+selection-foreground = #D9DCE2
+palette = 0=#17181C
+palette = 1=#D97C75
+palette = 2=#9CBF88
+palette = 3=#D6B977
+palette = 4=#7F9FCB
+palette = 5=#B392C9
+palette = 6=#7DB8B5
+palette = 7=#D9DCE2
+palette = 8=#4A505C
+palette = 9=#E8958E
+palette = 10=#B5D4A1
+palette = 11=#E6CF98
+palette = 12=#9DB8DE
+palette = 13=#C9AEDB
+palette = 14=#9ACFCB
+palette = 15=#EEF0F3

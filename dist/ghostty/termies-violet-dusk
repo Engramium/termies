@@ -1,0 +1,22 @@
+# Violet Dusk (Termies)
+background = #565761
+foreground = #F8F8F2
+cursor-color = #BD93F9
+selection-background = #75698F
+selection-foreground = #F8F8F2
+palette = 0=#282A36
+palette = 1=#FD8684
+palette = 2=#50FA7B
+palette = 3=#F1FA8C
+palette = 4=#C098F9
+palette = 5=#FF79C6
+palette = 6=#8BE9FD
+palette = 7=#F8F8F2
+palette = 8=#6272A4
+palette = 9=#FE8A88
+palette = 10=#69FF94
+palette = 11=#FFFFA5
+palette = 12=#D6ACFF
+palette = 13=#FF92DF
+palette = 14=#A4FFFF
+palette = 15=#FFFFFF

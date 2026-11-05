@@ -1,0 +1,22 @@
+# Ink Mono Dusk (Termies)
+background = #434445
+foreground = #CFD2D6
+cursor-color = #E0A458
+selection-background = #72614B
+selection-foreground = #CFD2D6
+palette = 0=#111214
+palette = 1=#D2756A
+palette = 2=#8DB36E
+palette = 3=#E0A458
+palette = 4=#88919E
+palette = 5=#948FA0
+palette = 6=#7E9A9A
+palette = 7=#CFD2D6
+palette = 8=#4B5059
+palette = 9=#E38A7E
+palette = 10=#A3C586
+palette = 11=#EDB97A
+palette = 12=#959DAA
+palette = 13=#A59FB0
+palette = 14=#9DB5B5
+palette = 15=#EEF0F2

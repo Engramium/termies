@@ -1,0 +1,22 @@
+# Calm Focus (Termies)
+background = #1B1D22
+foreground = #C9CED8
+cursor-color = #8FA8C8
+selection-background = #3E4754
+selection-foreground = #C9CED8
+palette = 0=#1B1D22
+palette = 1=#D9776F
+palette = 2=#9CBF88
+palette = 3=#D6B977
+palette = 4=#7F9FCB
+palette = 5=#B392C9
+palette = 6=#7DB8B5
+palette = 7=#C9CED8
+palette = 8=#4A505C
+palette = 9=#E8958E
+palette = 10=#B5D4A1
+palette = 11=#E6CF98
+palette = 12=#9DB8DE
+palette = 13=#C9AEDB
+palette = 14=#9ACFCB
+palette = 15=#E6E9EF

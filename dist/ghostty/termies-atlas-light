@@ -1,0 +1,22 @@
+# Atlas Light (Termies)
+background = #FAFAFA
+foreground = #383A42
+cursor-color = #526FFF
+selection-background = #C8D0FC
+selection-foreground = #383A42
+palette = 0=#383A42
+palette = 1=#E45649
+palette = 2=#50A14F
+palette = 3=#C18401
+palette = 4=#4078F2
+palette = 5=#A626A4
+palette = 6=#0184BC
+palette = 7=#A0A1A7
+palette = 8=#A0A1A7
+palette = 9=#D0736C
+palette = 10=#659C67
+palette = 11=#AE893E
+palette = 12=#668FE3
+palette = 13=#BC5BBA
+palette = 14=#3498C6
+palette = 15=#383A42

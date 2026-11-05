@@ -1,0 +1,22 @@
+# Forest Dim Dusk (Termies)
+background = #484F49
+foreground = #C4CCC2
+cursor-color = #A3C4A8
+selection-background = #637266
+selection-foreground = #C4CCC2
+palette = 0=#182019
+palette = 1=#CD8D7F
+palette = 2=#9DBF8A
+palette = 3=#CDB97E
+palette = 4=#7FA4A0
+palette = 5=#AE98B5
+palette = 6=#86BDB0
+palette = 7=#C4CCC2
+palette = 8=#4D5A4E
+palette = 9=#E39B8C
+palette = 10=#B6D6A6
+palette = 11=#E2D096
+palette = 12=#9CBDB8
+palette = 13=#C7B3CD
+palette = 14=#A5D4C7
+palette = 15=#E8EEE6

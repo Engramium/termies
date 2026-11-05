@@ -1,0 +1,22 @@
+# Contrast Day (Termies)
+background = #FFFFFF
+foreground = #111418
+cursor-color = #0047AB
+selection-background = #B2C8E6
+selection-foreground = #111418
+palette = 0=#111418
+palette = 1=#B00020
+palette = 2=#006B2E
+palette = 3=#7A5A00
+palette = 4=#0047AB
+palette = 5=#7A1FA2
+palette = 6=#00606B
+palette = 7=#5A5E66
+palette = 8=#3A3E46
+palette = 9=#D0203A
+palette = 10=#00843A
+palette = 11=#946E00
+palette = 12=#1A5FC4
+palette = 13=#9430C4
+palette = 14=#007A88
+palette = 15=#111418

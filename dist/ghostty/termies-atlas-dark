@@ -1,0 +1,22 @@
+# Atlas Dark (Termies)
+background = #282C34
+foreground = #ABB2BF
+cursor-color = #528BFF
+selection-background = #354871
+selection-foreground = #ABB2BF
+palette = 0=#282C34
+palette = 1=#E06C75
+palette = 2=#98C379
+palette = 3=#E5C07B
+palette = 4=#61AFEF
+palette = 5=#C678DD
+palette = 6=#56B6C2
+palette = 7=#ABB2BF
+palette = 8=#5C6370
+palette = 9=#EC8D94
+palette = 10=#B2D79B
+palette = 11=#EED5A2
+palette = 12=#8AC3F4
+palette = 13=#D89BE6
+palette = 14=#7CCAD5
+palette = 15=#FFFFFF

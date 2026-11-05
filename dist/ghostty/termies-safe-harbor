@@ -1,0 +1,22 @@
+# Safe Harbor (Termies)
+background = #1C2026
+foreground = #E4E6EA
+cursor-color = #56B4E9
+selection-background = #2D4C60
+selection-foreground = #E4E6EA
+palette = 0=#1C2026
+palette = 1=#D7660D
+palette = 2=#009E73
+palette = 3=#F0E442
+palette = 4=#56B4E9
+palette = 5=#CC79A7
+palette = 6=#E69F00
+palette = 7=#E4E6EA
+palette = 8=#62656B
+palette = 9=#DF853D
+palette = 10=#33B18F
+palette = 11=#F3E968
+palette = 12=#78C3ED
+palette = 13=#D694B9
+palette = 14=#EBB233
+palette = 15=#FFFFFF

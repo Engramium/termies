@@ -1,0 +1,22 @@
+# Agent Navy (Termies)
+background = #001622
+foreground = #CFD9E7
+cursor-color = #709AB8
+selection-background = #223E4F
+selection-foreground = #CFD9E7
+palette = 0=#001622
+palette = 1=#D9776F
+palette = 2=#00D569
+palette = 3=#D6B977
+palette = 4=#7F9FCB
+palette = 5=#D44A8E
+palette = 6=#7DB8B5
+palette = 7=#CFD9E7
+palette = 8=#4A5B69
+palette = 9=#E1928C
+palette = 10=#33DD87
+palette = 11=#DEC792
+palette = 12=#99B2D5
+palette = 13=#DD6EA5
+palette = 14=#97C6C4
+palette = 15=#FFFFFF
