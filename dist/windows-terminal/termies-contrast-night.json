@@ -1,0 +1,23 @@
+{
+  "name": "Termies Contrast Night",
+  "background": "#0B0C0E",
+  "foreground": "#F5F6F8",
+  "cursorColor": "#7DB8FF",
+  "selectionBackground": "#2D4056",
+  "black": "#0B0C0E",
+  "red": "#FF6B6B",
+  "green": "#5CE08A",
+  "yellow": "#FFD966",
+  "blue": "#6AB0FF",
+  "purple": "#E08CFF",
+  "cyan": "#5CE0E0",
+  "white": "#F5F6F8",
+  "brightBlack": "#6B7079",
+  "brightRed": "#FF9B9B",
+  "brightGreen": "#8FF0B0",
+  "brightYellow": "#FFE699",
+  "brightBlue": "#93C7FF",
+  "brightPurple": "#EDB3FF",
+  "brightCyan": "#93EDED",
+  "brightWhite": "#FFFFFF"
+}

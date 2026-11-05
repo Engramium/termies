@@ -1,0 +1,23 @@
+{
+  "name": "Termies Safe Harbor",
+  "background": "#1C2026",
+  "foreground": "#E4E6EA",
+  "cursorColor": "#56B4E9",
+  "selectionBackground": "#2D4C60",
+  "black": "#1C2026",
+  "red": "#D7660D",
+  "green": "#009E73",
+  "yellow": "#F0E442",
+  "blue": "#56B4E9",
+  "purple": "#CC79A7",
+  "cyan": "#E69F00",
+  "white": "#E4E6EA",
+  "brightBlack": "#62656B",
+  "brightRed": "#DF853D",
+  "brightGreen": "#33B18F",
+  "brightYellow": "#F3E968",
+  "brightBlue": "#78C3ED",
+  "brightPurple": "#D694B9",
+  "brightCyan": "#EBB233",
+  "brightWhite": "#FFFFFF"
+}

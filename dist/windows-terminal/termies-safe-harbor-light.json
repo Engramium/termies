@@ -1,0 +1,23 @@
+{
+  "name": "Termies Safe Harbor Light",
+  "background": "#F8F8F6",
+  "foreground": "#22252B",
+  "cursorColor": "#0072B2",
+  "selectionBackground": "#AED0E2",
+  "black": "#22252B",
+  "red": "#B55000",
+  "green": "#007E5C",
+  "yellow": "#966700",
+  "blue": "#0072B2",
+  "purple": "#995B7D",
+  "cyan": "#387597",
+  "white": "#5A5E66",
+  "brightBlack": "#3A3E46",
+  "brightRed": "#BF6925",
+  "brightGreen": "#259073",
+  "brightYellow": "#A57D25",
+  "brightBlue": "#2586BC",
+  "brightPurple": "#A7738F",
+  "brightCyan": "#5589A5",
+  "brightWhite": "#22252B"
+}

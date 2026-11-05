@@ -1,0 +1,23 @@
+{
+  "name": "Termies Violet Day",
+  "background": "#F7F5FB",
+  "foreground": "#282A36",
+  "cursorColor": "#7B5CC4",
+  "selectionBackground": "#D2C7EA",
+  "black": "#F7F5FB",
+  "red": "#B5534B",
+  "green": "#5C7F4A",
+  "yellow": "#9A7420",
+  "blue": "#3D6B8C",
+  "purple": "#7D5A9A",
+  "cyan": "#3E7F7B",
+  "white": "#282A36",
+  "brightBlack": "#AFAEB6",
+  "brightRed": "#C4756F",
+  "brightGreen": "#79936B",
+  "brightYellow": "#A78B4C",
+  "brightBlue": "#6489A3",
+  "brightPurple": "#977BAE",
+  "brightCyan": "#629390",
+  "brightWhite": "#686A72"
+}

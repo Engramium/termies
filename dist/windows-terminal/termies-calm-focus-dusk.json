@@ -1,0 +1,23 @@
+{
+  "name": "Termies Calm Focus Dusk",
+  "background": "#4A4C51",
+  "foreground": "#C9CED8",
+  "cursorColor": "#8FA8C8",
+  "selectionBackground": "#5F6875",
+  "black": "#1B1D22",
+  "red": "#D7847F",
+  "green": "#9CBF88",
+  "yellow": "#D6B977",
+  "blue": "#7F9FCB",
+  "purple": "#B392C9",
+  "cyan": "#7DB8B5",
+  "white": "#C9CED8",
+  "brightBlack": "#4A505C",
+  "brightRed": "#E8958E",
+  "brightGreen": "#B5D4A1",
+  "brightYellow": "#E6CF98",
+  "brightBlue": "#9DB8DE",
+  "brightPurple": "#C9AEDB",
+  "brightCyan": "#9ACFCB",
+  "brightWhite": "#E6E9EF"
+}

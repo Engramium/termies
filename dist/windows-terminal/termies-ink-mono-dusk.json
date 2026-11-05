@@ -1,0 +1,23 @@
+{
+  "name": "Termies Ink Mono Dusk",
+  "background": "#434445",
+  "foreground": "#CFD2D6",
+  "cursorColor": "#E0A458",
+  "selectionBackground": "#72614B",
+  "black": "#111214",
+  "red": "#D2756A",
+  "green": "#8DB36E",
+  "yellow": "#E0A458",
+  "blue": "#88919E",
+  "purple": "#948FA0",
+  "cyan": "#7E9A9A",
+  "white": "#CFD2D6",
+  "brightBlack": "#4B5059",
+  "brightRed": "#E38A7E",
+  "brightGreen": "#A3C586",
+  "brightYellow": "#EDB97A",
+  "brightBlue": "#959DAA",
+  "brightPurple": "#A59FB0",
+  "brightCyan": "#9DB5B5",
+  "brightWhite": "#EEF0F2"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Termies Contrast Day",
+  "background": "#FFFFFF",
+  "foreground": "#111418",
+  "cursorColor": "#0047AB",
+  "selectionBackground": "#B2C8E6",
+  "black": "#111418",
+  "red": "#B00020",
+  "green": "#006B2E",
+  "yellow": "#7A5A00",
+  "blue": "#0047AB",
+  "purple": "#7A1FA2",
+  "cyan": "#00606B",
+  "white": "#5A5E66",
+  "brightBlack": "#3A3E46",
+  "brightRed": "#D0203A",
+  "brightGreen": "#00843A",
+  "brightYellow": "#946E00",
+  "brightBlue": "#1A5FC4",
+  "brightPurple": "#9430C4",
+  "brightCyan": "#007A88",
+  "brightWhite": "#111418"
+}

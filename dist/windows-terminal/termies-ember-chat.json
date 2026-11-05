@@ -1,0 +1,23 @@
+{
+  "name": "Termies Ember Chat",
+  "background": "#1A1714",
+  "foreground": "#E2D9CC",
+  "cursorColor": "#E08A5B",
+  "selectionBackground": "#553A29",
+  "black": "#1A1714",
+  "red": "#D0786A",
+  "green": "#9CBF88",
+  "yellow": "#D9B872",
+  "blue": "#7E9BB5",
+  "purple": "#B08FB0",
+  "cyan": "#86B5A8",
+  "white": "#E2D9CC",
+  "brightBlack": "#4E4740",
+  "brightRed": "#E6978A",
+  "brightGreen": "#B6D6A6",
+  "brightYellow": "#E8CD8E",
+  "brightBlue": "#9DB8CF",
+  "brightPurple": "#C9AFC9",
+  "brightCyan": "#A5CDBF",
+  "brightWhite": "#F3EEE6"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Termies Quiet Ink Dusk",
+  "background": "#414243",
+  "foreground": "#CFD2D6",
+  "cursorColor": "#E0A458",
+  "selectionBackground": "#715F49",
+  "black": "#0E0F11",
+  "red": "#D2756A",
+  "green": "#8DB36E",
+  "yellow": "#E0A458",
+  "blue": "#848E9B",
+  "purple": "#918B9D",
+  "cyan": "#7E9A9A",
+  "white": "#CFD2D6",
+  "brightBlack": "#4B5059",
+  "brightRed": "#E38A7E",
+  "brightGreen": "#A3C586",
+  "brightYellow": "#EDB97A",
+  "brightBlue": "#959DAA",
+  "brightPurple": "#A59FB0",
+  "brightCyan": "#9DB5B5",
+  "brightWhite": "#EEF0F2"
+}

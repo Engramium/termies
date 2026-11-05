@@ -1,0 +1,23 @@
+{
+  "name": "Termies Plum Deep",
+  "background": "#200125",
+  "foreground": "#E1E1E1",
+  "cursorColor": "#FF9F29",
+  "selectionBackground": "#633026",
+  "black": "#200125",
+  "red": "#D9776F",
+  "green": "#7F6728",
+  "yellow": "#D6B977",
+  "blue": "#7F9FCB",
+  "purple": "#D44A8E",
+  "cyan": "#7DB8B5",
+  "white": "#E1E1E1",
+  "brightBlack": "#644F67",
+  "brightRed": "#E1928C",
+  "brightGreen": "#998553",
+  "brightYellow": "#DEC792",
+  "brightBlue": "#99B2D5",
+  "brightPurple": "#DD6EA5",
+  "brightCyan": "#97C6C4",
+  "brightWhite": "#FFFFFF"
+}

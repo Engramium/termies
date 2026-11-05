@@ -1,0 +1,23 @@
+{
+  "name": "Termies Agent Night",
+  "background": "#141724",
+  "foreground": "#00AC61",
+  "cursorColor": "#00AC61",
+  "selectionBackground": "#0E4436",
+  "black": "#141724",
+  "red": "#D9776F",
+  "green": "#00AC61",
+  "yellow": "#D6B977",
+  "blue": "#005892",
+  "purple": "#D44A8E",
+  "cyan": "#7DB8B5",
+  "white": "#D4D8E0",
+  "brightBlack": "#0D4B39",
+  "brightRed": "#E1928C",
+  "brightGreen": "#33BD81",
+  "brightYellow": "#DEC792",
+  "brightBlue": "#3379A8",
+  "brightPurple": "#DD6EA5",
+  "brightCyan": "#97C6C4",
+  "brightWhite": "#FFFFFF"
+}

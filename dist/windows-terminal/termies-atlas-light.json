@@ -1,0 +1,23 @@
+{
+  "name": "Termies Atlas Light",
+  "background": "#FAFAFA",
+  "foreground": "#383A42",
+  "cursorColor": "#526FFF",
+  "selectionBackground": "#C8D0FC",
+  "black": "#383A42",
+  "red": "#E45649",
+  "green": "#50A14F",
+  "yellow": "#C18401",
+  "blue": "#4078F2",
+  "purple": "#A626A4",
+  "cyan": "#0184BC",
+  "white": "#A0A1A7",
+  "brightBlack": "#A0A1A7",
+  "brightRed": "#D0736C",
+  "brightGreen": "#659C67",
+  "brightYellow": "#AE893E",
+  "brightBlue": "#668FE3",
+  "brightPurple": "#BC5BBA",
+  "brightCyan": "#3498C6",
+  "brightWhite": "#383A42"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Termies Forest Dim Dusk",
+  "background": "#484F49",
+  "foreground": "#C4CCC2",
+  "cursorColor": "#A3C4A8",
+  "selectionBackground": "#637266",
+  "black": "#182019",
+  "red": "#CD8D7F",
+  "green": "#9DBF8A",
+  "yellow": "#CDB97E",
+  "blue": "#7FA4A0",
+  "purple": "#AE98B5",
+  "cyan": "#86BDB0",
+  "white": "#C4CCC2",
+  "brightBlack": "#4D5A4E",
+  "brightRed": "#E39B8C",
+  "brightGreen": "#B6D6A6",
+  "brightYellow": "#E2D096",
+  "brightBlue": "#9CBDB8",
+  "brightPurple": "#C7B3CD",
+  "brightCyan": "#A5D4C7",
+  "brightWhite": "#E8EEE6"
+}

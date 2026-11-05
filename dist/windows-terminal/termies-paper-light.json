@@ -1,0 +1,23 @@
+{
+  "name": "Termies Paper Light",
+  "background": "#F6F4EF",
+  "foreground": "#2F3440",
+  "cursorColor": "#3D6B8C",
+  "selectionBackground": "#BECBD1",
+  "black": "#2F3440",
+  "red": "#B5534B",
+  "green": "#5C7F4A",
+  "yellow": "#9A7420",
+  "blue": "#3D6B8C",
+  "purple": "#7D5A9A",
+  "cyan": "#3E7F7B",
+  "white": "#8A8F99",
+  "brightBlack": "#7A808C",
+  "brightRed": "#C96A62",
+  "brightGreen": "#76995F",
+  "brightYellow": "#B38E35",
+  "brightBlue": "#5884A8",
+  "brightPurple": "#9675B0",
+  "brightCyan": "#5A9A95",
+  "brightWhite": "#D5D8DE"
+}

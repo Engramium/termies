@@ -1,0 +1,23 @@
+{
+  "name": "Termies Ink Mono Light",
+  "background": "#F6F6F4",
+  "foreground": "#1C1D20",
+  "cursorColor": "#A8691F",
+  "selectionBackground": "#DFCCB4",
+  "black": "#F6F6F4",
+  "red": "#B5534B",
+  "green": "#5C7F4A",
+  "yellow": "#9A7420",
+  "blue": "#3D6B8C",
+  "purple": "#7D5A9A",
+  "cyan": "#3E7F7B",
+  "white": "#1C1D20",
+  "brightBlack": "#AAAAAA",
+  "brightRed": "#C4756F",
+  "brightGreen": "#78936A",
+  "brightYellow": "#A78A4B",
+  "brightBlue": "#6489A3",
+  "brightPurple": "#977BAE",
+  "brightCyan": "#61938F",
+  "brightWhite": "#606163"
+}

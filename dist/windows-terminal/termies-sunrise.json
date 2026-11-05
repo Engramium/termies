@@ -1,0 +1,23 @@
+{
+  "name": "Termies Sunrise",
+  "background": "#241B19",
+  "foreground": "#F6ECE4",
+  "cursorColor": "#FF8A4C",
+  "selectionBackground": "#663C28",
+  "black": "#241B19",
+  "red": "#D9776F",
+  "green": "#9CBF88",
+  "yellow": "#D6B977",
+  "blue": "#7F9FCB",
+  "purple": "#B392C9",
+  "cyan": "#7DB8B5",
+  "white": "#F6ECE4",
+  "brightBlack": "#6E6460",
+  "brightRed": "#E1928C",
+  "brightGreen": "#B0CCA0",
+  "brightYellow": "#DEC792",
+  "brightBlue": "#99B2D5",
+  "brightPurple": "#C2A8D4",
+  "brightCyan": "#97C6C4",
+  "brightWhite": "#F9F2EC"
+}
