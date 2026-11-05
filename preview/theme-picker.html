@@ -1,0 +1,1541 @@
+<!doctype html>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Warp Theme Picker</title>
+<style>
+/* Page chrome uses these tokens. Each mockup carries its own palette as inline variables. */
+:root {
+  --page-bg: #F4F2ED;
+  --page-fg: #23262D;
+  --page-muted: #6B707B;
+  --page-line: #DCD8CF;
+  --page-card: #FFFFFF;
+  --page-accent: #3D6B8C;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page-bg: #101114;
+    --page-fg: #E4E6EA;
+    --page-muted: #9097A3;
+    --page-line: #2A2D35;
+    --page-card: #16181C;
+    --page-accent: #8FA8C8;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page-bg: #101114;
+  --page-fg: #E4E6EA;
+  --page-muted: #9097A3;
+  --page-line: #2A2D35;
+  --page-card: #16181C;
+  --page-accent: #8FA8C8;
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--page-fg);
+  font: 15px/1.55 "Newsreader", Georgia, "Times New Roman", serif;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px;
+}
+.wrap { max-width: 1160px; margin: 0 auto; }
+header { margin-bottom: 24px; }
+h1 { font-size: 32px; font-weight: 500; margin: 0 0 8px; letter-spacing: -0.01em; text-wrap: balance; }
+header p { margin: 0; color: var(--page-muted); max-width: 62ch; }
+
+.toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 24px; }
+.filters { display: flex; gap: 6px; }
+.filters button {
+  font: 13px/1 "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  background: transparent; color: var(--page-muted);
+  border: 1px solid var(--page-line); border-radius: 999px;
+  padding: 8px 14px; cursor: pointer;
+}
+.filters button[aria-pressed="true"] { color: var(--page-fg); border-color: var(--page-accent); }
+.filters button:focus-visible { outline: 2px solid var(--page-accent); outline-offset: 2px; }
+.picked { font: 13px/1.4 "IBM Plex Mono", ui-monospace, Menlo, monospace; color: var(--page-muted); }
+.picked b { color: var(--page-fg); font-weight: 500; }
+
+.grid {
+  display: grid; gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.card { min-width: 0; display: flex; flex-direction: column; }
+.card.hidden { display: none; }
+.label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.label h2 { font-size: 18px; font-weight: 500; margin: 0; }
+.label span { font: 12px/1 "IBM Plex Mono", ui-monospace, Menlo, monospace; color: var(--page-muted); white-space: nowrap; }
+.note { font-size: 14px; color: var(--page-muted); margin: 6px 0 12px; text-wrap: pretty; min-height: 2.8em; }
+.swatches { display: flex; gap: 6px; margin-bottom: 12px; }
+.swatches i { width: 22px; height: 22px; border-radius: 6px; border: 1px solid var(--page-line); display: block; }
+.pick {
+  margin-top: 12px; align-self: flex-start;
+  font: 13px/1 "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  background: var(--page-card); color: var(--page-fg);
+  border: 1px solid var(--page-line); border-radius: 8px; padding: 9px 14px; cursor: pointer;
+}
+.pick:hover { border-color: var(--page-accent); }
+.pick:focus-visible { outline: 2px solid var(--page-accent); outline-offset: 2px; }
+.pick[aria-pressed="true"] { border-color: var(--page-accent); color: var(--page-accent); }
+
+/* Terminal mockup. Palette variables come inline from the theme data. */
+.term {
+  background: var(--bg); color: var(--fg);
+  border: 1px solid var(--line); border-radius: 14px;
+  overflow: hidden; display: flex; flex-direction: column;
+  height: 420px;
+  font: 13px/1.6 "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+.bar { display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+.log { flex: 1; min-height: 0; overflow: hidden; padding: 16px 16px 8px; display: flex; flex-direction: column; gap: 14px; }
+.msg-user { align-self: flex-end; max-width: 82%; background: var(--user-bg); padding: 8px 12px; border-radius: 12px; }
+.msg-ai { max-width: 100%; }
+.msg-ai code, .accent { color: var(--accent); }
+.role { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+pre { margin: 8px 0 0; padding: 10px 12px; background: var(--code-bg); border-radius: 8px; white-space: pre-wrap; overflow-x: auto; font-size: 12px; }
+.tool { font-size: 12px; color: var(--muted); }
+.tool b { color: var(--ok); font-weight: 500; }
+.input { margin: 8px 14px 14px; padding: 9px 12px; border: 1px solid var(--line); background: var(--input-bg); display: flex; justify-content: space-between; align-items: center; gap: 10px; color: var(--muted); font-size: 12px; border-radius: var(--input-radius); }
+.input kbd { font: inherit; color: var(--accent); }
+
+/* Chat styles: bubbles, thread labels, or a bare prompt line */
+.style-bubbles .msg-user { border-radius: 12px; }
+.style-thread .msg-user { background: transparent; border: 1px solid var(--line); border-radius: 8px; font-family: "Newsreader", Georgia, serif; font-size: 15px; }
+.style-prompt .msg-user { background: transparent; padding: 0; border-radius: 0; align-self: stretch; max-width: 100%; color: var(--accent); }
+.style-prompt .msg-user::before { content: "› "; }
+.style-prompt .msg-ai { border-left: 1px solid var(--line); padding-left: 12px; }
+.report { font: 12px/1.5 "IBM Plex Mono", ui-monospace, Menlo, monospace; color: var(--page-muted); margin-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.report .pass { color: #2F7D4A; font-weight: 500; }
+.report .fail { color: #A33A3A; font-weight: 500; }
+#grid[data-sim="protan"] .term { filter: url(#sim-protan); }
+#grid[data-sim="deutan"] .term { filter: url(#sim-deutan); }
+#grid[data-sim="tritan"] .term { filter: url(#sim-tritan); }
+.sim-note { font: 12px/1.4 "IBM Plex Mono", ui-monospace, Menlo, monospace; color: var(--page-muted); margin: 8px 0 0; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Warp theme picker</h1>
+    <p>Each card is a theme shown as a Claude or ChatGPT style exchange in Warp. Filter by dark, light, or mood, and check the contrast report on each card.</p>
+  </header>
+
+  <div class="toolbar">
+    <div class="filters" role="group" aria-label="Filter by mode">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="dark" aria-pressed="false">Dark</button>
+      <button type="button" data-filter="light" aria-pressed="false">Light</button>
+    </div>
+    <div class="filters" role="group" aria-label="Filter by mood">
+      <button type="button" data-mood="all" aria-pressed="true">Any mood</button>
+      <button type="button" data-mood="calm" aria-pressed="false">Calm</button>
+      <button type="button" data-mood="energizing" aria-pressed="false">Energizing</button>
+      <button type="button" data-mood="minimal" aria-pressed="false">Minimal</button>
+      <button type="button" data-mood="warm" aria-pressed="false">Warm</button>
+      <button type="button" data-mood="low light" aria-pressed="false">Low light</button>
+      <button type="button" data-mood="bright" aria-pressed="false">Bright</button>
+    </div>
+    <div class="filters" role="group" aria-label="Color vision view">
+      <button type="button" data-sim="none" aria-pressed="true">Normal vision</button>
+      <button type="button" data-sim="protan" aria-pressed="false">Protanopia</button>
+      <button type="button" data-sim="deutan" aria-pressed="false">Deuteranopia</button>
+      <button type="button" data-sim="tritan" aria-pressed="false">Tritanopia</button>
+    </div>
+    <p class="sim-note">Color-vision views are approximate simulations (Machado et al., 2009, full severity), not a substitute for testing with people.</p>
+    <div class="picked" aria-live="polite">Picked: <b id="picked-list">none yet</b></div>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="sim-protan"><feColorMatrix type="matrix" values="0.152286 1.052583 -0.204868 0 0  0.114503 0.786281 0.099216 0 0  -0.003882 -0.048116 1.051998 0 0  0 0 0 1 0"/></filter>
+    <filter id="sim-deutan"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.011820 0.042940 0.968881 0 0  0 0 0 1 0"/></filter>
+    <filter id="sim-tritan"><feColorMatrix type="matrix" values="1.255528 -0.076749 -0.178779 0 0  -0.078411 0.930809 0.147602 0 0  0.004733 0.691367 0.303900 0 0  0 0 0 1 0"/></filter>
+  </svg>
+  <main class="grid" id="grid"></main>
+</div>
+
+<script>
+const THEMES = [
+  {
+    "id": "soft-chat",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 12.91,
+      "ansi_min": 5.76,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Soft Chat",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Chat-style, closest to Claude and ChatGPT. Steel-blue accent.",
+    "bg": "#17181C",
+    "fg": "#D9DCE2",
+    "muted": "#A8ABB0",
+    "line": "#515357",
+    "accent": "#8FA8C8",
+    "userBg": "#27282C",
+    "codeBg": "#0F1014",
+    "ok": "#9CBF88",
+    "inputBg": "#27282C",
+    "inputRadius": "999px",
+    "swatches": [
+      "#17181C",
+      "#27282C",
+      "#D9DCE2",
+      "#8FA8C8",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "soft-chat-dusk",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.55,
+      "ansi_min": 3.04,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Soft Chat Dusk",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Middle mood between Soft Chat dark and light.",
+    "bg": "#48494C",
+    "fg": "#D9DCE2",
+    "muted": "#B5B7BC",
+    "line": "#747579",
+    "accent": "#8FA8C8",
+    "userBg": "#545558",
+    "codeBg": "#424346",
+    "ok": "#9CBF88",
+    "inputBg": "#545558",
+    "inputRadius": "999px",
+    "swatches": [
+      "#48494C",
+      "#545558",
+      "#D9DCE2",
+      "#8FA8C8",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "soft-chat-light",
+    "tags": [
+      "calm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 14.08,
+      "ansi_min": 3.11,
+      "ansi_min_name": "bright green"
+    },
+    "name": "Soft Chat Light",
+    "mode": "light",
+    "style": "bubbles",
+    "note": "Chat-style, closest to Claude and ChatGPT. Steel-blue accent.",
+    "bg": "#F4F5F7",
+    "fg": "#22252B",
+    "muted": "#56595E",
+    "line": "#B5B7BA",
+    "accent": "#3D5F8A",
+    "userBg": "#E3E4E7",
+    "codeBg": "#F0F1F3",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#F4F5F7",
+      "#E3E4E7",
+      "#22252B",
+      "#3D5F8A",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "ember-chat",
+    "tags": [
+      "calm",
+      "warm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 12.77,
+      "ansi_min": 5.59,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Ember Chat",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Warm dark with an ember accent.",
+    "bg": "#1A1714",
+    "fg": "#E2D9CC",
+    "muted": "#B0A89E",
+    "line": "#56514B",
+    "accent": "#E08A5B",
+    "userBg": "#2A2723",
+    "codeBg": "#120F0D",
+    "ok": "#9CBF88",
+    "inputBg": "#2A2723",
+    "inputRadius": "999px",
+    "swatches": [
+      "#1A1714",
+      "#2A2723",
+      "#E2D9CC",
+      "#E08A5B",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "ember-chat-dusk",
+    "tags": [
+      "calm",
+      "warm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.5,
+      "ansi_min": 3.11,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Ember Chat Dusk",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Middle mood between Ember Chat dark and light.",
+    "bg": "#4B4845",
+    "fg": "#E2D9CC",
+    "muted": "#BCB5AA",
+    "line": "#78746E",
+    "accent": "#E08A5B",
+    "userBg": "#575450",
+    "codeBg": "#454240",
+    "ok": "#9CBF88",
+    "inputBg": "#575450",
+    "inputRadius": "999px",
+    "swatches": [
+      "#4B4845",
+      "#575450",
+      "#E2D9CC",
+      "#E08A5B",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "ember-chat-light",
+    "tags": [
+      "calm",
+      "warm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 13.8,
+      "ansi_min": 3.02,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Ember Chat Light",
+    "mode": "light",
+    "style": "bubbles",
+    "note": "Warm dark with an ember accent.",
+    "bg": "#FAF6F1",
+    "fg": "#2E2620",
+    "muted": "#615A54",
+    "line": "#BDB8B2",
+    "accent": "#B85A2E",
+    "userBg": "#EAE5E0",
+    "codeBg": "#F6F2ED",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#FAF6F1",
+      "#EAE5E0",
+      "#2E2620",
+      "#B85A2E",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "quiet-ink",
+    "tags": [
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 12.64,
+      "ansi_min": 5.2,
+      "ansi_min_name": "normal blue"
+    },
+    "name": "Quiet Ink",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Terminal first. One amber accent on near black.",
+    "bg": "#0E0F11",
+    "fg": "#CFD2D6",
+    "muted": "#9FA1A5",
+    "line": "#484A4C",
+    "accent": "#E0A458",
+    "userBg": "#1D1F21",
+    "codeBg": "#060709",
+    "ok": "#8DB36E",
+    "inputBg": "#1D1F21",
+    "inputRadius": "4px",
+    "swatches": [
+      "#0E0F11",
+      "#1D1F21",
+      "#CFD2D6",
+      "#E0A458",
+      "#8DB36E"
+    ]
+  },
+  {
+    "id": "quiet-ink-dusk",
+    "tags": [
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.64,
+      "ansi_min": 3.03,
+      "ansi_min_name": "normal blue"
+    },
+    "name": "Quiet Ink Dusk",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Middle mood between Quiet Ink dark and light.",
+    "bg": "#414243",
+    "fg": "#CFD2D6",
+    "muted": "#ACAEB1",
+    "line": "#6C6D6F",
+    "accent": "#E0A458",
+    "userBg": "#4C4E4F",
+    "codeBg": "#3B3C3D",
+    "ok": "#8DB36E",
+    "inputBg": "#4C4E4F",
+    "inputRadius": "4px",
+    "swatches": [
+      "#414243",
+      "#4C4E4F",
+      "#CFD2D6",
+      "#E0A458",
+      "#8DB36E"
+    ]
+  },
+  {
+    "id": "quiet-ink-light",
+    "tags": [
+      "minimal",
+      "bright"
+    ],
+    "contrast": {
+      "text": 15.23,
+      "ansi_min": 3.07,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Quiet Ink Light",
+    "mode": "light",
+    "style": "prompt",
+    "note": "Terminal first. One amber accent on near black.",
+    "bg": "#F8F7F4",
+    "fg": "#1E2024",
+    "muted": "#545658",
+    "line": "#B7B6B6",
+    "accent": "#9C5B2A",
+    "userBg": "#E7E6E3",
+    "codeBg": "#F4F3F0",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "4px",
+    "swatches": [
+      "#F8F7F4",
+      "#E7E6E3",
+      "#1E2024",
+      "#9C5B2A",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "calm-focus",
+    "tags": [
+      "calm",
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 10.68,
+      "ansi_min": 5.47,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Calm Focus",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Quiet slate, the all-day default.",
+    "bg": "#1B1D22",
+    "fg": "#C9CED8",
+    "muted": "#9EA2AA",
+    "line": "#4F5259",
+    "accent": "#8FA8C8",
+    "userBg": "#292B31",
+    "codeBg": "#14161B",
+    "ok": "#9CBF88",
+    "inputBg": "#292B31",
+    "inputRadius": "4px",
+    "swatches": [
+      "#1B1D22",
+      "#292B31",
+      "#C9CED8",
+      "#8FA8C8",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "calm-focus-dusk",
+    "tags": [
+      "calm",
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 5.44,
+      "ansi_min": 3.07,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Calm Focus Dusk",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Middle mood between Calm Focus dark and light.",
+    "bg": "#4A4C51",
+    "fg": "#C9CED8",
+    "muted": "#A9AEB6",
+    "line": "#70737A",
+    "accent": "#8FA8C8",
+    "userBg": "#54565C",
+    "codeBg": "#45474C",
+    "ok": "#9CBF88",
+    "inputBg": "#54565C",
+    "inputRadius": "4px",
+    "swatches": [
+      "#4A4C51",
+      "#54565C",
+      "#C9CED8",
+      "#8FA8C8",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "calm-focus-light",
+    "tags": [
+      "calm",
+      "minimal",
+      "bright"
+    ],
+    "contrast": {
+      "text": 13.04,
+      "ansi_min": 3.07,
+      "ansi_min_name": "bright green"
+    },
+    "name": "Calm Focus Light",
+    "mode": "light",
+    "style": "prompt",
+    "note": "Quiet slate, the all-day default.",
+    "bg": "#F2F4F7",
+    "fg": "#262A33",
+    "muted": "#595C64",
+    "line": "#B5B7BC",
+    "accent": "#4C6A8E",
+    "userBg": "#E2E4E7",
+    "codeBg": "#EEF0F3",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "4px",
+    "swatches": [
+      "#F2F4F7",
+      "#E2E4E7",
+      "#262A33",
+      "#4C6A8E",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "ink-mono",
+    "tags": [
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 12.35,
+      "ansi_min": 5.08,
+      "ansi_min_name": "normal blue"
+    },
+    "name": "Ink Mono",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Almost grayscale, one amber accent.",
+    "bg": "#111214",
+    "fg": "#CFD2D6",
+    "muted": "#A0A2A6",
+    "line": "#4A4C4E",
+    "accent": "#E0A458",
+    "userBg": "#202124",
+    "codeBg": "#090A0C",
+    "ok": "#8DB36E",
+    "inputBg": "#202124",
+    "inputRadius": "4px",
+    "swatches": [
+      "#111214",
+      "#202124",
+      "#CFD2D6",
+      "#E0A458",
+      "#8DB36E"
+    ]
+  },
+  {
+    "id": "ink-mono-dusk",
+    "tags": [
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.43,
+      "ansi_min": 3.02,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Ink Mono Dusk",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Middle mood between Ink Mono dark and light.",
+    "bg": "#434445",
+    "fg": "#CFD2D6",
+    "muted": "#ACAEB2",
+    "line": "#6D6F70",
+    "accent": "#E0A458",
+    "userBg": "#4E4F51",
+    "codeBg": "#3D3E3F",
+    "ok": "#8DB36E",
+    "inputBg": "#4E4F51",
+    "inputRadius": "4px",
+    "swatches": [
+      "#434445",
+      "#4E4F51",
+      "#CFD2D6",
+      "#E0A458",
+      "#8DB36E"
+    ]
+  },
+  {
+    "id": "ink-mono-light",
+    "tags": [
+      "minimal",
+      "bright"
+    ],
+    "contrast": {
+      "text": 15.58,
+      "ansi_min": 3.04,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Ink Mono Light",
+    "mode": "light",
+    "style": "prompt",
+    "note": "Almost grayscale, one amber accent.",
+    "bg": "#F6F6F4",
+    "fg": "#1C1D20",
+    "muted": "#525355",
+    "line": "#B5B5B4",
+    "accent": "#A8691F",
+    "userBg": "#E5E5E3",
+    "codeBg": "#F2F2F0",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "4px",
+    "swatches": [
+      "#F6F6F4",
+      "#E5E5E3",
+      "#1C1D20",
+      "#A8691F",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "forest-dim",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 10.13,
+      "ansi_min": 5.41,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Forest Dim",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Dark green with sage accents, for long sessions.",
+    "bg": "#182019",
+    "fg": "#C4CCC2",
+    "muted": "#99A198",
+    "line": "#4C544C",
+    "accent": "#A3C4A8",
+    "userBg": "#262E27",
+    "codeBg": "#111912",
+    "ok": "#9DBF8A",
+    "inputBg": "#262E27",
+    "inputRadius": "999px",
+    "swatches": [
+      "#182019",
+      "#262E27",
+      "#C4CCC2",
+      "#A3C4A8",
+      "#9DBF8A"
+    ]
+  },
+  {
+    "id": "forest-dim-dusk",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 5.13,
+      "ansi_min": 3.1,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Forest Dim Dusk",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Middle mood between Forest Dim dark and light.",
+    "bg": "#484F49",
+    "fg": "#C4CCC2",
+    "muted": "#A5ADA4",
+    "line": "#6D746D",
+    "accent": "#A3C4A8",
+    "userBg": "#525953",
+    "codeBg": "#434A44",
+    "ok": "#9DBF8A",
+    "inputBg": "#525953",
+    "inputRadius": "999px",
+    "swatches": [
+      "#484F49",
+      "#525953",
+      "#C4CCC2",
+      "#A3C4A8",
+      "#9DBF8A"
+    ]
+  },
+  {
+    "id": "forest-dim-light",
+    "tags": [
+      "calm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 12.63,
+      "ansi_min": 3.08,
+      "ansi_min_name": "bright green"
+    },
+    "name": "Forest Dim Light",
+    "mode": "light",
+    "style": "bubbles",
+    "note": "Dark green with sage accents, for long sessions.",
+    "bg": "#F3F6F1",
+    "fg": "#243026",
+    "muted": "#586259",
+    "line": "#B5BBB4",
+    "accent": "#4E7A55",
+    "userBg": "#E2E6E1",
+    "codeBg": "#EFF2ED",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#F3F6F1",
+      "#E2E6E1",
+      "#243026",
+      "#4E7A55",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "violet-night",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 13.36,
+      "ansi_min": 4.53,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Violet Night",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Purple-accented, with a palette inspired by Dracula.",
+    "bg": "#282A36",
+    "fg": "#F8F8F2",
+    "muted": "#C4C4C3",
+    "line": "#66686E",
+    "accent": "#BD93F9",
+    "userBg": "#393A45",
+    "codeBg": "#20222E",
+    "ok": "#50FA7B",
+    "inputBg": "#393A45",
+    "inputRadius": "999px",
+    "swatches": [
+      "#282A36",
+      "#393A45",
+      "#F8F8F2",
+      "#BD93F9",
+      "#50FA7B"
+    ]
+  },
+  {
+    "id": "violet-dusk",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.72,
+      "ansi_min": 3.0,
+      "ansi_min_name": "normal magenta"
+    },
+    "name": "Violet Dusk",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Middle mood between Violet dark and light.",
+    "bg": "#565761",
+    "fg": "#F8F8F2",
+    "muted": "#D0D0CE",
+    "line": "#87878C",
+    "accent": "#BD93F9",
+    "userBg": "#63646D",
+    "codeBg": "#50515B",
+    "ok": "#50FA7B",
+    "inputBg": "#63646D",
+    "inputRadius": "999px",
+    "swatches": [
+      "#565761",
+      "#63646D",
+      "#F8F8F2",
+      "#BD93F9",
+      "#50FA7B"
+    ]
+  },
+  {
+    "id": "violet-day",
+    "tags": [
+      "calm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 13.16,
+      "ansi_min": 3.01,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Violet Day",
+    "mode": "light",
+    "style": "bubbles",
+    "note": "Purple-accented, with a palette inspired by Dracula.",
+    "bg": "#F7F5FB",
+    "fg": "#282A36",
+    "muted": "#5C5D67",
+    "line": "#B9B8C0",
+    "accent": "#7B5CC4",
+    "userBg": "#E6E5EB",
+    "codeBg": "#F3F1F7",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#F7F5FB",
+      "#E6E5EB",
+      "#282A36",
+      "#7B5CC4",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "paper-dark",
+    "tags": [
+      "calm",
+      "warm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 12.8,
+      "ansi_min": 5.41,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Paper Dark",
+    "mode": "dark",
+    "style": "thread",
+    "note": "Warm off-white and warm dark.",
+    "bg": "#1F1E1B",
+    "fg": "#E6E1D8",
+    "muted": "#B4B0A9",
+    "line": "#5B5854",
+    "accent": "#C9A46A",
+    "userBg": "#2F2E2A",
+    "codeBg": "#171613",
+    "ok": "#9CBF88",
+    "inputBg": "#2F2E2A",
+    "inputRadius": "999px",
+    "swatches": [
+      "#1F1E1B",
+      "#2F2E2A",
+      "#E6E1D8",
+      "#C9A46A",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "paper-dusk",
+    "tags": [
+      "calm",
+      "warm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.49,
+      "ansi_min": 3.0,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Paper Dusk",
+    "mode": "dark",
+    "style": "thread",
+    "note": "Middle mood between Paper dark and light.",
+    "bg": "#4E4D4A",
+    "fg": "#E6E1D8",
+    "muted": "#C0BCB4",
+    "line": "#7C7975",
+    "accent": "#C9A46A",
+    "userBg": "#5A5955",
+    "codeBg": "#484744",
+    "ok": "#9CBF88",
+    "inputBg": "#5A5955",
+    "inputRadius": "999px",
+    "swatches": [
+      "#4E4D4A",
+      "#5A5955",
+      "#E6E1D8",
+      "#C9A46A",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "paper-light",
+    "tags": [
+      "calm",
+      "warm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 11.33,
+      "ansi_min": 2.79,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Paper Light",
+    "mode": "light",
+    "style": "thread",
+    "note": "Warm off-white and warm dark.",
+    "bg": "#F6F4EF",
+    "fg": "#2F3440",
+    "muted": "#61646C",
+    "line": "#BABABA",
+    "accent": "#3D6B8C",
+    "userBg": "#E6E5E1",
+    "codeBg": "#F2F0EC",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#F6F4EF",
+      "#E6E5E1",
+      "#2F3440",
+      "#3D6B8C",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "thread-dark",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 11.02,
+      "ansi_min": 5.29,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Thread Dark",
+    "mode": "dark",
+    "style": "thread",
+    "note": "Document-like, with a role label on each turn.",
+    "bg": "#1E2026",
+    "fg": "#D8D4CC",
+    "muted": "#AAA7A2",
+    "line": "#565658",
+    "accent": "#C2A878",
+    "userBg": "#2D2E33",
+    "codeBg": "#17191F",
+    "ok": "#9CBF88",
+    "inputBg": "#2D2E33",
+    "inputRadius": "999px",
+    "swatches": [
+      "#1E2026",
+      "#2D2E33",
+      "#D8D4CC",
+      "#C2A878",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "thread-dusk",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 5.54,
+      "ansi_min": 3.01,
+      "ansi_min_name": "normal blue"
+    },
+    "name": "Thread Dusk",
+    "mode": "dark",
+    "style": "thread",
+    "note": "Middle mood between Thread dark and light.",
+    "bg": "#4E4F52",
+    "fg": "#D8D4CC",
+    "muted": "#B6B3AE",
+    "line": "#777777",
+    "accent": "#C2A878",
+    "userBg": "#595A5C",
+    "codeBg": "#484A4D",
+    "ok": "#9CBF88",
+    "inputBg": "#595A5C",
+    "inputRadius": "999px",
+    "swatches": [
+      "#4E4F52",
+      "#595A5C",
+      "#D8D4CC",
+      "#C2A878",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "paper-thread",
+    "tags": [
+      "calm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 12.46,
+      "ansi_min": 2.82,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Paper Thread",
+    "mode": "light",
+    "style": "thread",
+    "note": "Document-like, with a role label on each turn.",
+    "bg": "#F7F5F0",
+    "fg": "#2B2E36",
+    "muted": "#5E6064",
+    "line": "#BAB9B8",
+    "accent": "#3D6B8C",
+    "userBg": "#E7E5E1",
+    "codeBg": "#F3F1EC",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#F7F5F0",
+      "#E7E5E1",
+      "#2B2E36",
+      "#3D6B8C",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "sunrise",
+    "tags": [
+      "energizing",
+      "warm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 14.48,
+      "ansi_min": 5.47,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Sunrise",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Energizing: warm orange accent for focus and comfort.",
+    "bg": "#241B19",
+    "fg": "#F6ECE4",
+    "muted": "#C2B8B1",
+    "line": "#635A56",
+    "accent": "#FF8A4C",
+    "userBg": "#352C29",
+    "codeBg": "#1C1311",
+    "ok": "#9CBF88",
+    "inputBg": "#352C29",
+    "inputRadius": "999px",
+    "swatches": [
+      "#241B19",
+      "#352C29",
+      "#F6ECE4",
+      "#FF8A4C",
+      "#9CBF88"
+    ]
+  },
+  {
+    "id": "sunrise-day",
+    "tags": [
+      "energizing",
+      "warm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 13.01,
+      "ansi_min": 3.0,
+      "ansi_min_name": "bright green"
+    },
+    "name": "Sunrise Day",
+    "mode": "light",
+    "style": "bubbles",
+    "note": "Energizing: warm orange accent for focus and comfort.",
+    "bg": "#FFF8F2",
+    "fg": "#3A2A22",
+    "muted": "#6B5E56",
+    "line": "#C4BAB4",
+    "accent": "#D9622B",
+    "userBg": "#EFE8E1",
+    "codeBg": "#FBF4EE",
+    "ok": "#5C7F4A",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#FFF8F2",
+      "#EFE8E1",
+      "#3A2A22",
+      "#D9622B",
+      "#5C7F4A"
+    ]
+  },
+  {
+    "id": "contrast-night",
+    "tags": [
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 18.1,
+      "ansi_min": 7.05,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Contrast Night",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "High Contrast, at least 7:1 text contrast.",
+    "bg": "#0B0C0E",
+    "fg": "#F5F6F8",
+    "muted": "#BABCBE",
+    "line": "#515254",
+    "accent": "#7DB8FF",
+    "userBg": "#1E1F21",
+    "codeBg": "#020305",
+    "ok": "#5CE08A",
+    "inputBg": "#1E1F21",
+    "inputRadius": "4px",
+    "swatches": [
+      "#0B0C0E",
+      "#1E1F21",
+      "#F5F6F8",
+      "#7DB8FF",
+      "#5CE08A"
+    ]
+  },
+  {
+    "id": "contrast-day",
+    "tags": [
+      "minimal",
+      "bright"
+    ],
+    "contrast": {
+      "text": 18.47,
+      "ansi_min": 4.68,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Contrast Day",
+    "mode": "light",
+    "style": "prompt",
+    "note": "High Contrast, at least 7:1 text contrast.",
+    "bg": "#FFFFFF",
+    "fg": "#111418",
+    "muted": "#4C4F52",
+    "line": "#B8B8BA",
+    "accent": "#0047AB",
+    "userBg": "#ECECED",
+    "codeBg": "#FAFAFA",
+    "ok": "#006B2E",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "4px",
+    "swatches": [
+      "#FFFFFF",
+      "#ECECED",
+      "#111418",
+      "#0047AB",
+      "#006B2E"
+    ]
+  },
+  {
+    "id": "safe-harbor",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 13.09,
+      "ansi_min": 4.51,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Safe Harbor",
+    "mode": "dark",
+    "style": "bubbles",
+    "note": "Colorblind-safe: errors and diffs stay distinct for color vision differences.",
+    "bg": "#1C2026",
+    "fg": "#E4E6EA",
+    "muted": "#B2B4B9",
+    "line": "#585B61",
+    "accent": "#56B4E9",
+    "userBg": "#2C3036",
+    "codeBg": "#14181E",
+    "ok": "#009E73",
+    "inputBg": "#2C3036",
+    "inputRadius": "999px",
+    "swatches": [
+      "#1C2026",
+      "#2C3036",
+      "#E4E6EA",
+      "#56B4E9",
+      "#009E73"
+    ]
+  },
+  {
+    "id": "safe-harbor-light",
+    "tags": [
+      "calm",
+      "bright"
+    ],
+    "contrast": {
+      "text": 14.44,
+      "ansi_min": 3.55,
+      "ansi_min_name": "bright yellow"
+    },
+    "name": "Safe Harbor Light",
+    "mode": "light",
+    "style": "bubbles",
+    "note": "Colorblind-safe: errors and diffs stay distinct for color vision differences.",
+    "bg": "#F8F8F6",
+    "fg": "#22252B",
+    "muted": "#585A5E",
+    "line": "#B8B9B9",
+    "accent": "#0072B2",
+    "userBg": "#E7E7E6",
+    "codeBg": "#F4F4F2",
+    "ok": "#007E5C",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "999px",
+    "swatches": [
+      "#F8F8F6",
+      "#E7E7E6",
+      "#22252B",
+      "#0072B2",
+      "#007E5C"
+    ]
+  },
+  {
+    "id": "atlas-dark",
+    "tags": [
+      "minimal",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.57,
+      "ansi_min": 4.38,
+      "ansi_min_name": "normal red"
+    },
+    "name": "Atlas Dark",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Classic, in the style of the One Dark and One Light palettes.",
+    "bg": "#282C34",
+    "fg": "#ABB2BF",
+    "muted": "#8A909C",
+    "line": "#4F545E",
+    "accent": "#528BFF",
+    "userBg": "#32373F",
+    "codeBg": "#23272E",
+    "ok": "#98C379",
+    "inputBg": "#32373F",
+    "inputRadius": "4px",
+    "swatches": [
+      "#282C34",
+      "#32373F",
+      "#ABB2BF",
+      "#528BFF",
+      "#98C379"
+    ]
+  },
+  {
+    "id": "atlas-light",
+    "tags": [
+      "minimal",
+      "bright"
+    ],
+    "contrast": {
+      "text": 10.86,
+      "ansi_min": 3.05,
+      "ansi_min_name": "bright blue"
+    },
+    "name": "Atlas Light",
+    "mode": "light",
+    "style": "prompt",
+    "note": "Classic, in the style of the One Dark and One Light palettes.",
+    "bg": "#FAFAFA",
+    "fg": "#383A42",
+    "muted": "#686A70",
+    "line": "#C0C0C3",
+    "accent": "#526FFF",
+    "userBg": "#EAEBEB",
+    "codeBg": "#F6F6F6",
+    "ok": "#50A14F",
+    "inputBg": "#FFFFFF",
+    "inputRadius": "4px",
+    "swatches": [
+      "#FAFAFA",
+      "#EAEBEB",
+      "#383A42",
+      "#526FFF",
+      "#50A14F"
+    ]
+  },
+  {
+    "id": "agent-night",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 6.01,
+      "ansi_min": 2.39,
+      "ansi_min_name": "normal blue"
+    },
+    "name": "Agent Night",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Dark teal-green, with an accent color for prompts and output.",
+    "bg": "#141724",
+    "fg": "#00AC61",
+    "muted": "#058752",
+    "line": "#0E4436",
+    "accent": "#00AC61",
+    "userBg": "#122329",
+    "codeBg": "#151122",
+    "ok": "#00AC61",
+    "inputBg": "#122329",
+    "inputRadius": "4px",
+    "swatches": [
+      "#141724",
+      "#122329",
+      "#00AC61",
+      "#00AC61",
+      "#00AC61"
+    ]
+  },
+  {
+    "id": "agent-navy",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 12.95,
+      "ansi_min": 4.54,
+      "ansi_min_name": "normal magenta"
+    },
+    "name": "Agent Navy",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Deep navy with a green prompt, measured from a terminal screenshot.",
+    "bg": "#001622",
+    "fg": "#CFD9E7",
+    "muted": "#9BA8B6",
+    "line": "#3E505D",
+    "accent": "#709AB8",
+    "userBg": "#112632",
+    "codeBg": "#000E1A",
+    "ok": "#00D569",
+    "inputBg": "#112632",
+    "inputRadius": "4px",
+    "swatches": [
+      "#001622",
+      "#112632",
+      "#CFD9E7",
+      "#709AB8",
+      "#00D569"
+    ]
+  },
+  {
+    "id": "plum-night",
+    "tags": [
+      "calm",
+      "warm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 14.92,
+      "ansi_min": 3.94,
+      "ansi_min_name": "normal magenta"
+    },
+    "name": "Plum Night",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Plum purple with an orange cursor, measured from a terminal screenshot.",
+    "bg": "#2C1647",
+    "fg": "#FEF5F5",
+    "muted": "#CABDCA",
+    "line": "#6B597B",
+    "accent": "#FF9F29",
+    "userBg": "#3D2855",
+    "codeBg": "#240D40",
+    "ok": "#00AB57",
+    "inputBg": "#3D2855",
+    "inputRadius": "4px",
+    "swatches": [
+      "#2C1647",
+      "#3D2855",
+      "#FEF5F5",
+      "#FF9F29",
+      "#00AB57"
+    ]
+  },
+  {
+    "id": "plum-deep",
+    "tags": [
+      "calm",
+      "low light"
+    ],
+    "contrast": {
+      "text": 14.7,
+      "ansi_min": 3.55,
+      "ansi_min_name": "normal green"
+    },
+    "name": "Plum Deep",
+    "mode": "dark",
+    "style": "prompt",
+    "note": "Deep plum with a light text color, measured from a terminal screenshot.",
+    "bg": "#200125",
+    "fg": "#E1E1E1",
+    "muted": "#B1A9B2",
+    "line": "#5A445D",
+    "accent": "#FF9F29",
+    "userBg": "#2F1334",
+    "codeBg": "#18001D",
+    "ok": "#7F6728",
+    "inputBg": "#2F1334",
+    "inputRadius": "4px",
+    "swatches": [
+      "#200125",
+      "#2F1334",
+      "#E1E1E1",
+      "#FF9F29",
+      "#7F6728"
+    ]
+  }
+];
+
+const SAMPLE_USER = "Why does order 956 still show a payout?";
+const SAMPLE_CODE = "if ($order->status === 'cancelled') return;";
+
+const grid = document.getElementById("grid");
+const pickedList = document.getElementById("picked-list");
+function reportHTML(c) {
+  const textOk = c.text >= 4.5;
+  const ansiOk = c.ansi_min >= 3;
+  const cls = textOk && ansiOk ? "pass" : "fail";
+  const verdict = textOk && ansiOk ? "Passes contrast checks" : "Fails a contrast check";
+  return `<span>Text ${c.text}:1</span><span>Weakest color ${c.ansi_min}:1 (${c.ansi_min_name})</span><span class="${cls}">${verdict}</span>`;
+}
+const picked = new Set();
+
+function card(t) {
+  const el = document.createElement("section");
+  el.className = "card";
+  el.dataset.mode = t.mode;
+  el.dataset.tags = t.tags.join("|");
+  el.innerHTML = `
+    <div class="label"><h2>${t.name}</h2><span>${t.mode}</span></div>
+    <div class="swatches">${t.swatches.map(c => `<i style="background:${c}"></i>`).join("")}</div>
+    <p class="note">${t.note}</p>
+    <div class="term style-${t.style}" style="--bg:${t.bg};--fg:${t.fg};--muted:${t.muted};--line:${t.line};--accent:${t.accent};--user-bg:${t.userBg};--code-bg:${t.codeBg};--ok:${t.ok};--input-bg:${t.inputBg};--input-radius:${t.inputRadius}">
+      <div class="bar"><span>Warp · ~/Termies</span><span>● ready</span></div>
+      <div class="log">
+        <div class="msg-user">${t.style === "thread" ? '<div class="role">You</div>' : ""}${SAMPLE_USER}</div>
+        <div class="msg-ai">
+          ${t.style === "prompt" ? "" : '<div class="role">Claude</div>'}
+          The payout step has no status check. A cancelled order reaches it.
+          <pre>${SAMPLE_CODE}</pre>
+        </div>
+        <div class="tool"><b>✓</b> ran 2 commands · 1 file changed</div>
+      </div>
+      <div class="input"><span>Ask anything…</span><kbd>⏎ send</kbd></div>
+    </div>
+    <div class="report">${reportHTML(t.contrast)}</div>
+    <button type="button" class="pick" aria-pressed="false">Pick this one</button>`;
+  const btn = el.querySelector(".pick");
+  btn.addEventListener("click", () => {
+    const on = !picked.has(t.id);
+    on ? picked.add(t.id) : picked.delete(t.id);
+    btn.setAttribute("aria-pressed", String(on));
+    btn.textContent = on ? "Picked" : "Pick this one";
+    pickedList.textContent = picked.size ? [...picked].map(id => THEMES.find(x => x.id === id).name).join(", ") : "none yet";
+  });
+  return el;
+}
+
+THEMES.forEach(t => grid.appendChild(card(t)));
+
+document.querySelectorAll("[data-sim]").forEach(b => {
+  b.addEventListener("click", () => {
+    document.getElementById("grid").dataset.sim = b.dataset.sim;
+    document.querySelectorAll("[data-sim]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  });
+});
+let activeMode = "all";
+let activeMood = "all";
+function applyFilters() {
+  document.querySelectorAll(".card").forEach(c => {
+    const modeOk = activeMode === "all" || c.dataset.mode === activeMode;
+    const moodOk = activeMood === "all" || c.dataset.tags.split("|").includes(activeMood);
+    c.classList.toggle("hidden", !(modeOk && moodOk));
+  });
+}
+document.querySelectorAll("[data-filter]").forEach(b => {
+  b.addEventListener("click", () => {
+    activeMode = b.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    applyFilters();
+  });
+});
+document.querySelectorAll("[data-mood]").forEach(b => {
+  b.addEventListener("click", () => {
+    activeMood = b.dataset.mood;
+    document.querySelectorAll("[data-mood]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    applyFilters();
+  });
+});
+</script>

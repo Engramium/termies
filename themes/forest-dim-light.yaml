@@ -1,0 +1,25 @@
+---
+name: "Forest Dim Light"
+accent: "#4E7A55"
+background: "#F3F6F1"
+foreground: "#243026"
+details: lighter
+terminal_colors:
+  normal:
+    black: "#F3F6F1"
+    red: "#B5534B"
+    green: "#5C7F4A"
+    yellow: "#9A7420"
+    blue: "#3D6B8C"
+    magenta: "#7D5A9A"
+    cyan: "#3E7F7B"
+    white: "#243026"
+  bright:
+    black: "#ABB1AA"
+    red: "#C4756F"
+    green: "#79946A"
+    yellow: "#A08649"
+    blue: "#6489A3"
+    magenta: "#977BAE"
+    cyan: "#62948F"
+    white: "#666E67"

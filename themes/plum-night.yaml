@@ -1,0 +1,27 @@
+# Colors measured from a Termius screenshot: background, text, cursor, green prompt, magenta IPs, dim mauve.
+# Inferred (not visible in the screenshot): normal black, red, yellow, blue, cyan, white; bright values derived.
+---
+name: "Plum Night"
+accent: "#FF9F29"
+background: "#2C1647"
+foreground: "#FEF5F5"
+details: darker
+terminal_colors:
+  normal:
+    black: "#2C1647"
+    red: "#D9776F"
+    green: "#00AB57"
+    yellow: "#D6B977"
+    blue: "#7F9FCB"
+    magenta: "#D44A8E"
+    cyan: "#7DB8B5"
+    white: "#FEF5F5"
+  bright:
+    black: "#786487"
+    red: "#E1928C"
+    green: "#33BC79"
+    yellow: "#DEC792"
+    blue: "#99B2D5"
+    magenta: "#DD6EA5"
+    cyan: "#97C6C4"
+    white: "#FFFFFF"

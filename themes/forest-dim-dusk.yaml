@@ -1,0 +1,25 @@
+---
+name: "Forest Dim Dusk"
+accent: "#A3C4A8"
+background: "#484F49"
+foreground: "#C4CCC2"
+details: darker
+terminal_colors:
+  normal:
+    black: "#182019"
+    red: "#CD8D7F"
+    green: "#9DBF8A"
+    yellow: "#CDB97E"
+    blue: "#7FA4A0"
+    magenta: "#AE98B5"
+    cyan: "#86BDB0"
+    white: "#C4CCC2"
+  bright:
+    black: "#4D5A4E"
+    red: "#E39B8C"
+    green: "#B6D6A6"
+    yellow: "#E2D096"
+    blue: "#9CBDB8"
+    magenta: "#C7B3CD"
+    cyan: "#A5D4C7"
+    white: "#E8EEE6"

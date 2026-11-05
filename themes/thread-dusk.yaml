@@ -1,0 +1,25 @@
+---
+name: "Thread Dusk"
+accent: "#C2A878"
+background: "#4E4F52"
+foreground: "#D8D4CC"
+details: darker
+terminal_colors:
+  normal:
+    black: "#1E2026"
+    red: "#D98A82"
+    green: "#9CBF88"
+    yellow: "#D6B977"
+    blue: "#7F9FCB"
+    magenta: "#B392C9"
+    cyan: "#7DB8B5"
+    white: "#D8D4CC"
+  bright:
+    black: "#5F5F60"
+    red: "#E1928C"
+    green: "#B0CCA0"
+    yellow: "#DEC792"
+    blue: "#99B2D5"
+    magenta: "#C2A8D4"
+    cyan: "#97C6C4"
+    white: "#E4E1DB"
